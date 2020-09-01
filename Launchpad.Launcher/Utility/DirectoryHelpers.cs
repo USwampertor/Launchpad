@@ -36,6 +36,35 @@ namespace Launchpad.Launcher.Utility
 		private const string ConfigurationFileName = "LauncherConfig";
 		private const string GameArgumentsFileName = "GameArguments";
 
+  /// <summary>
+  /// Fixes URL if it has any error.
+  /// </summary>
+  /// <param name="url">in string url that will fix. </param>
+	/// <returns>The fixed url.</returns>
+		public static string FixURL(string url)
+  {
+  url = url.Replace("//", "/");
+  url = url.Replace(":/", "://");
+  return url;
+  /*
+  if (string.IsNullOrEmpty(url))
+	{
+  return;
+  }
+  int index = url.IndexOf("://");
+  if (index < 0)
+  {
+  return;
+  }
+  else
+  {
+  string substring = url.Substring(0, index + "://".Length);
+  substring.Replace("//", "/");
+  url = url.Substring(0, index + "://".Length) + substring;
+  }
+  */
+	}
+
 		/// <summary>
 		/// Gets the expected path to the config file on disk.
 		/// </summary>

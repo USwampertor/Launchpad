@@ -9,6 +9,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <LangVersion>7.1</LangVersion>
     <Prefer32bit>true</Prefer32bit>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <!-- Workaround for https://github.com/dotnet/roslyn-project-system/issues/1739 -->
