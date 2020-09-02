@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# SA1137: Elements should have the same indentation
+dotnet_diagnostic.SA1137.severity = suggestion
+
+# SA1027: Use tabs correctly
+dotnet_diagnostic.SA1027.severity = suggestion
