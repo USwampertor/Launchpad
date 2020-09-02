@@ -158,7 +158,6 @@ namespace Launchpad.Launcher.Interface
 				LoadBanner();
 
 				LoadChangelog();
-
 				// If we can connect, proceed with the rest of our checks.
 				if (ChecksHandler.IsInitialStartup())
 				{

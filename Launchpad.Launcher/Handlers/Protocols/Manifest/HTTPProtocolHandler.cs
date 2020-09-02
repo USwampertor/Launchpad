@@ -27,6 +27,7 @@ using System.Text;
 
 using Launchpad.Common;
 using Launchpad.Common.Enums;
+using Launchpad.Launcher.Utility;
 using NLog;
 using SixLabors.ImageSharp;
 using Image = SixLabors.ImageSharp.Image;
@@ -97,6 +98,7 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		public override bool IsPlatformAvailable(ESystemTarget platform)
 		{
 			var remote = $"{this.Configuration.RemoteAddress}/game/{platform}/.provides";
+      remote = DirectoryHelpers.FixURL(remote);
 
 			return DoesRemoteDirectoryOrFileExist(remote);
 		}
@@ -105,13 +107,16 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		public override string GetChangelogMarkup()
 		{
 			var changelogURL = $"{this.Configuration.RemoteAddress}/launcher/changelog.pango";
-			return ReadRemoteFile(changelogURL);
+      changelogURL = DirectoryHelpers.FixURL(changelogURL);
+
+      return ReadRemoteFile(changelogURL);
 		}
 
 		/// <inheritdoc />
 		public override bool CanProvideBanner()
 		{
 			var bannerURL = $"{this.Configuration.RemoteAddress}/launcher/banner.png";
+      bannerURL = DirectoryHelpers.FixURL(bannerURL);
 
 			return DoesRemoteDirectoryOrFileExist(bannerURL);
 		}
@@ -120,7 +125,9 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		public override Image<Rgba32> GetBanner()
 		{
 			var bannerURL = $"{this.Configuration.RemoteAddress}/launcher/banner.png";
-			var localBannerPath = Path.Combine(Path.GetTempPath(), "banner.png");
+      bannerURL = DirectoryHelpers.FixURL(bannerURL);
+
+      var localBannerPath = Path.Combine(Path.GetTempPath(), "banner.png");
 
 			DownloadRemoteFile(bannerURL, localBannerPath);
 			return Image.Load(localBannerPath);
@@ -129,10 +136,12 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		/// <inheritdoc />
 		protected override void DownloadRemoteFile(string url, string localPath, long totalSize = 0, long contentOffset = 0, bool useAnonymousLogin = false)
 		{
-			// Clean the url string
-			var remoteURL = url.Replace(Path.DirectorySeparatorChar, '/');
+      // Clean the url string
+      Log.Info($"Downloading REMOTE file at url {url}");
+      var remoteURL = url.Replace(Path.DirectorySeparatorChar, '/');
+      // Log.Info($"Reading remote file at remoteURL {url}");
 
-			string username;
+      string username;
 			string password;
 			if (useAnonymousLogin)
 			{
@@ -222,9 +231,11 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		/// <inheritdoc />
 		protected override string ReadRemoteFile(string url, bool useAnonymousLogin = false)
 		{
+      Log.Info($"Reading REMOTE file at url {url}");
 			var remoteURL = url.Replace(Path.DirectorySeparatorChar, '/');
+      // Log.Info($"Reading remote file at remoteURL {remoteURL}");
 
-			string username;
+      string username;
 			string password;
 			if (useAnonymousLogin)
 			{
@@ -334,13 +345,14 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		/// <returns><c>true</c>, if the directory or file exists, <c>false</c> otherwise.</returns>
 		/// <param name="url">The remote url of the directory or file.</param>
 		private bool DoesRemoteDirectoryOrFileExist(string url)
-		{
-			var cleanURL = url.Replace(Path.DirectorySeparatorChar, '/');
-			var request = CreateHttpWebRequest(cleanURL, this.Configuration.RemoteUsername, this.Configuration.RemotePassword);
+    {
+      Log.Info($"Cheking if url exists {url}");
+      var cleanURL = url.Replace(Path.DirectorySeparatorChar, '/');
+      var request = CreateHttpWebRequest(cleanURL, this.Configuration.RemoteUsername, this.Configuration.RemotePassword);
 
 			request.Method = WebRequestMethods.Http.Head;
 			HttpWebResponse response = null;
-			try
+      try
 			{
 				response = (HttpWebResponse)request.GetResponse();
 				if (response.StatusCode != HttpStatusCode.OK)

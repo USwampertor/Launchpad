@@ -185,12 +185,16 @@ namespace Launchpad.Launcher.Handlers
 			try
 			{
 				var executable = Path.Combine(DirectoryHelpers.GetLocalGameDirectory(), Configuration.ExecutablePath);
-				if (!File.Exists(executable))
+        Log.Info($"executable {executable}");
+        if (!File.Exists(executable))
 				{
 					throw new FileNotFoundException($"Game executable at path (\"{executable}\") not found.");
 				}
+        Log.Info("DEBUG");
 
-				var executableDir = Path.GetDirectoryName(executable) ?? DirectoryHelpers.GetLocalLauncherDirectory();
+        var executableDir = Path.GetDirectoryName(executable) ?? DirectoryHelpers.GetLocalLauncherDirectory();
+
+        Log.Info("DEBUG");
 
 				// Do not move the argument assignment inside the gameStartInfo initializer.
 				// It causes a TargetInvocationException crash through black magic.

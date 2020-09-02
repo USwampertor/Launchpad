@@ -463,6 +463,8 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 
 			// Build the access strings
 			var remoteURL = $"{baseRemoteURL}/{fileEntry.RelativePath}";
+      remoteURL = DirectoryHelpers.FixURL(remoteURL);
+
 			var localPath = Path.Combine(baseLocalPath, fileEntry.RelativePath);
 
 			// Make sure we have a directory to put the file in
@@ -616,7 +618,7 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 				case EModule.Launcher:
 				case EModule.Game:
 				{
-					checksum = ReadRemoteFile(this.FileManifestHandler.GetManifestChecksumURL((EManifestType)module)).RemoveLineSeparatorsAndNulls();
+					checksum = ReadRemoteFile(DirectoryHelpers.FixURL(this.FileManifestHandler.GetManifestChecksumURL((EManifestType)module))).RemoveLineSeparatorsAndNulls();
 					break;
 				}
 				default:
@@ -687,6 +689,7 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		/// </exception>
 		protected virtual void DownloadModuleManifest(EModule module)
 		{
+      Log.Debug("DEBUG");
 			string remoteURL;
 			string localPath;
 			string oldLocalPath;
@@ -695,7 +698,7 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 				case EModule.Launcher:
 				case EModule.Game:
 				{
-					remoteURL = this.FileManifestHandler.GetManifestURL((EManifestType)module);
+					remoteURL = DirectoryHelpers.FixURL(this.FileManifestHandler.GetManifestURL((EManifestType)module));
 					localPath = this.FileManifestHandler.GetManifestPath((EManifestType)module, false);
 					oldLocalPath = this.FileManifestHandler.GetManifestPath((EManifestType)module, true);
 
@@ -742,6 +745,8 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		protected virtual Version GetRemoteLauncherVersion()
 		{
 			var remoteVersionPath = DirectoryHelpers.GetRemoteLauncherVersionPath();
+      remoteVersionPath = DirectoryHelpers.FixURL(remoteVersionPath);
+
 			var remoteVersion = ReadRemoteFile(remoteVersionPath).RemoveLineSeparatorsAndNulls();
 
 			if (Version.TryParse(remoteVersion, out var version))
@@ -760,7 +765,10 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 		protected virtual Version GetRemoteGameVersion()
 		{
 			var remoteVersionPath = $"{this.Configuration.RemoteAddress}/game/{this.Configuration.SystemTarget}/bin/GameVersion.txt";
-			var remoteVersion = ReadRemoteFile(remoteVersionPath).RemoveLineSeparatorsAndNulls();
+      remoteVersionPath = DirectoryHelpers.FixURL(remoteVersionPath);
+
+      var remoteVersion = ReadRemoteFile(remoteVersionPath).RemoveLineSeparatorsAndNulls();
+      remoteVersion = DirectoryHelpers.FixURL(remoteVersion);
 
 			if (Version.TryParse(remoteVersion, out var version))
 			{
