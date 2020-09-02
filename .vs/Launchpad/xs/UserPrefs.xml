@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{676312FB-AF67-4340-B86F-9CCEB22D802F}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Launchpad.Launcher/Interface/MainWindow.cs">
+    <Files>
+      <File FileName="Launchpad.Launcher/Interface/MainWindow.cs" Line="34" Column="35" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Launchpad" expanded="True">
+            <Node name="Launchpad.Launcher" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Launchpad" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Launchpad.Launcher PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x64" />
+  <Debugger.DebugSourceFolders />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

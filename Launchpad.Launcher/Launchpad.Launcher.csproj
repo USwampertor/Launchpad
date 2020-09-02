@@ -23,9 +23,16 @@
     <Authors>Jarl Gullberg;jax</Authors>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>anycpu</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType></DebugType>
+    <PlatformTarget>anycpu</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Config.Net" Version="4.13.7" />
-    <PackageReference Include="GtkSharp" Version="3.22.25.24" />
+    <PackageReference Include="GtkSharp" Version="3.22.25.128" />
     <PackageReference Include="NLog" Version="4.6.6" />
     <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0002" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" />
