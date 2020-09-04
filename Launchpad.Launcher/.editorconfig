@@ -5,3 +5,6 @@ dotnet_diagnostic.SA1137.severity = suggestion
 
 # SA1027: Use tabs correctly
 dotnet_diagnostic.SA1027.severity = suggestion
+
+# IDE0055: Fix formatting
+dotnet_diagnostic.IDE0055.severity = suggestion

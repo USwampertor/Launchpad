@@ -62,12 +62,12 @@ namespace Launchpad.Launcher.Interface
 		{
 			using (var builder = new Builder(Assembly.GetExecutingAssembly(), "Launchpad.Launcher.Interface.Launchpad.glade", null))
 			{
-				var window = new MainWindow(builder, builder.GetObject(nameof(MainWindow)).Handle)
-				{
+        var window = new MainWindow(builder, builder.GetObject(nameof(MainWindow)).Handle)
+        {
 					Icon = ResourceManager.ApplicationIcon
 				};
 
-				return window;
+        return window;
 			}
 		}
 
@@ -95,9 +95,11 @@ namespace Launchpad.Launcher.Interface
 			{
 				using (var dialog = new AboutDialog(builder.GetObject("MainAboutDialog").Handle))
 				{
+          dialog.Title = "About Youcanevent Launcher";
 					dialog.Icon = ResourceManager.ApplicationIcon;
 					dialog.Logo = ResourceManager.ApplicationIcon;
-					dialog.Run();
+          dialog.License = string.Empty;
+          dialog.Run();
 				}
 			}
 		}

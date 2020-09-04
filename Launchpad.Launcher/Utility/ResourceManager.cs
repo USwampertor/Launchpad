@@ -35,13 +35,29 @@ namespace Launchpad.Launcher.Utility
 		/// </summary>
 		public static Pixbuf ApplicationIcon { get; }
 
-		private static readonly Assembly Assembly;
+    /// <summary>
+    /// Gets The application banner.
+    /// </summary>
+    public static Pixbuf ApplicationBanner { get; }
+
+    /// <summary>
+    /// Gets The application banner.
+    /// </summary>
+    public static Pixbuf ApplicationLaunchImage { get; }
+
+    /// <summary>
+    /// Gets the application css theme.
+    /// </summary>
+    /// public static Gtk.CssProvider ApplicationThemeProvider { get; }
+    private static readonly Assembly Assembly;
 
 		static ResourceManager()
 		{
 			Assembly = Assembly.GetExecutingAssembly();
 
-			ApplicationIcon = Pixbuf.LoadFromResource("Launchpad.Launcher.Resources.Icon.png");
-		}
+			ApplicationIcon = Pixbuf.LoadFromResource("Launchpad.Launcher.Resources.banner.ico");
+      ApplicationBanner = Pixbuf.LoadFromResource("Launchpad.Launcher.Resources.banner.png");
+      ApplicationLaunchImage = Pixbuf.LoadFromResource("Launchpad.Launcher.Resources.banner.png");
+    }
 	}
 }

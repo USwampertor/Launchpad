@@ -294,6 +294,7 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 					RefreshModuleManifest(EModule.Game);
 
 					moduleManifest = this.FileManifestHandler.GetManifest(EManifestType.Game, false);
+          Log.Info($"GameManifest.txt has {moduleManifest.Count} elements");
 					break;
 				}
 				default:
@@ -408,7 +409,7 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 						);
 					}
 				}
-
+        Log.Info($"Local version is {local} and remote is {remote}");
 				return local < remote;
 			}
 			catch (WebException wex)

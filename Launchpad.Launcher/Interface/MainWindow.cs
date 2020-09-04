@@ -119,16 +119,17 @@ namespace Launchpad.Launcher.Interface
 			// Set the initial launcher mode
 			SetLauncherMode(ELauncherMode.Inactive, false);
 
-			// Set the window title
-			this.Title = LocalizationCatalog.GetString("Youcanevent - {0}", this.Configuration.GameName);
+      // Set the window title
+      this.Title = "Youcanevent Launcher"; // LocalizationCatalog.GetString("Youcanevent - {0}", this.Configuration.GameName);
 			this.StatusLabel.Text = LocalizationCatalog.GetString("Idle");
-		}
+      // this.MainButton.Image = new Gtk.Image(ResourceManager.ApplicationLaunchImage);
+    }
 
-		/// <summary>
-		/// Initializes the UI of the launcher, performing varying checks against the patching server.
-		/// </summary>
-		/// <returns>A task that must be awaited.</returns>
-		public Task InitializeAsync()
+    /// <summary>
+    /// Initializes the UI of the launcher, performing varying checks against the patching server.
+    /// </summary>
+    /// <returns>A task that must be awaited.</returns>
+    public Task InitializeAsync()
 		{
 			if (this.IsInitialized)
 			{
@@ -241,8 +242,9 @@ namespace Launchpad.Launcher.Interface
 		private void DisplayInitialStartupDialog()
 		{
 			Log.Info("This instance is the first start of the application in this folder.");
-
-			var text = LocalizationCatalog.GetString
+      this.TagfileService.CreateLauncherTagfile();
+      /*
+      var text = LocalizationCatalog.GetString
 			(
 				"This appears to be the first time you're starting the launcher.\n" +
 				"Is this the location where you would like to install the game?"
@@ -261,8 +263,6 @@ namespace Launchpad.Launcher.Interface
 				{
 					// Yes, install here
 					Log.Info("User accepted installation in this directory. Installing in current directory.");
-
-					this.TagfileService.CreateLauncherTagfile();
 				}
 				else
 				{
@@ -271,6 +271,7 @@ namespace Launchpad.Launcher.Interface
 					Environment.Exit(2);
 				}
 			}
+      */
 		}
 
 		private void LoadBanner()
@@ -625,7 +626,8 @@ namespace Launchpad.Launcher.Interface
 		{
 			Application.Invoke((o, args) =>
 			{
-				if (exitCode != 0)
+				if (exitCode != 0 &&
+            exitCode != -1073741510)
 				{
 					using (var crashDialog = new MessageDialog
 					(
