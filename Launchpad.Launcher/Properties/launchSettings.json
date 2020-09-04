@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Launchpad.Launcher": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\toa_l\\Documents\\Work\\Launchpad\\Launchpad.Launcher\\bin\\Release\\net461\\Launchpad.exe"
+    }
+  }
+}

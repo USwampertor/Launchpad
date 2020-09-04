@@ -67,8 +67,10 @@ namespace Launchpad.Launcher
 				Environment.SetEnvironmentVariable("GTK_DATA_PREFIX", Directory.GetCurrentDirectory());
 				Environment.SetEnvironmentVariable("GSETTINGS_SCHEMA_DIR", "share\\glib-2.0\\schemas\\");
 			}
-
-			Log.Info($"Launchpad v{LocalVersionService.GetLocalLauncherVersion()} starting...");
+      Log.Info($"\n\n\n");
+      Log.Info($"----------------------------------------------------------------------------");
+      Log.Info($"Launching Youcanevent launcher {System.DateTime.Now}");
+      Log.Info($"Launchpad v{LocalVersionService.GetLocalLauncherVersion()} starting...");
 
 			var systemBitness = Environment.Is64BitOperatingSystem ? "x64" : "x86";
 			var processBitness = Environment.Is64BitProcess ? "64-bit" : "32-bit";

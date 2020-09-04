@@ -1,45 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.12 -->
-  <object class="GtkAboutDialog" id="MainAboutDialog">
-    <property name="can_focus">False</property>
-    <property name="resizable">False</property>
-    <property name="window_position">center-on-parent</property>
-    <property name="type_hint">dialog</property>
-    <property name="transient_for">MainWindow</property>
-    <property name="attached_to">MainWindow</property>
-    <property name="program_name">Youcanevent Launcher</property>
-    <property name="version">1.0.0</property>
-    <property name="copyright" translatable="yes">Jarl Gullberg 2018</property>
-    <property name="website">https://github.com/Nihlus/Launchpad</property>
-    <property name="website_label" translatable="yes">Launchpad on Github</property>
-    <property name="authors">Carbon Machina - 4M2Q Games</property>
-    <property name="logo">banner.png</property>
-    <property name="logo_icon_name">image-missing</property>
-    <property name="wrap_license">True</property>
-    <child internal-child="vbox">
-      <object class="GtkBox" id="aboutdialog-vbox1">
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox" id="aboutdialog-action_area1">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-      </object>
-    </child>
-  </object>
   <object class="GtkWindow" id="MainWindow">
     <property name="width_request">745</property>
     <property name="height_request">415</property>
@@ -278,6 +239,47 @@
             <property name="pack_type">end</property>
             <property name="position">4</property>
           </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAboutDialog" id="MainAboutDialog">
+    <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">MainWindow</property>
+    <property name="attached_to">MainWindow</property>
+    <property name="program_name">Youcanevent Launcher</property>
+    <property name="version">1.0.0</property>
+    <property name="copyright" translatable="yes">Youcanevent 2020</property>
+    <property name="website">https://youcanevent.com/</property>
+    <property name="website_label" translatable="yes">Youcanevent</property>
+    <property name="authors">Carbon Machina - 4M2Q Games
+Based on Jarl Gullberg's Launchpad
+Initial work by Jarl Gulberg</property>
+    <property name="logo">banner.png</property>
+    <property name="logo_icon_name">image-missing</property>
+    <property name="wrap_license">True</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="aboutdialog-vbox1">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="aboutdialog-action_area1">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>

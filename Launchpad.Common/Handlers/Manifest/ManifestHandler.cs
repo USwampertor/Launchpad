@@ -216,7 +216,7 @@ namespace Launchpad.Common.Handlers.Manifest
 				return $"{this.RemoteURL}/launcher/{manifestType}Manifest.txt";
 			}
 
-			return $"{this.RemoteURL}/game/{this.SystemTarget}/GManifest.txt";
+			return $"{this.RemoteURL}/game/{this.SystemTarget}/GameManifest.txt";
 		}
 
 		/// <summary>
@@ -231,7 +231,7 @@ namespace Launchpad.Common.Handlers.Manifest
 				return $"{this.RemoteURL}/launcher/{manifestType}Manifest.checksum";
 			}
 
-			return $"{this.RemoteURL}/game/{this.SystemTarget}/GManifest.checksum";
+			return $"{this.RemoteURL}/game/{this.SystemTarget}/GameManifest.checksum";
 		}
 	}
 }

@@ -599,6 +599,9 @@ namespace Launchpad.Launcher.Handlers.Protocols.Manifest
 			{
 				var localHash = MD5Handler.GetStreamHash(file);
 
+        Log.Info($"Local hash of manifest file is {localHash}");
+        Log.Info($"Rmote hash of manifest file is {remoteHash}");
+
 				return remoteHash != localHash;
 			}
 		}

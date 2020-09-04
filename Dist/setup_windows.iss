@@ -3,7 +3,7 @@
 
 #define MyAppName "Youcanevent"
 #define MyAppVersion "1.0.0"
-#define MyAppPublisher "Marco Millan"
+#define MyAppPublisher "Youcanevent"
 #define MyAppURL "https://youcanevent.com/"
 #define MyAppExeName "Launchpad.exe"
 
